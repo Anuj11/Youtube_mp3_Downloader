@@ -1,0 +1,16 @@
+Django==1.11
+ffmpeg-python==0.1.11
+future==0.16.0
+google-api-python-client==1.6.7
+httplib2==0.11.3
+oauth2client==4.1.2
+pafy==0.5.4
+Pillow==5.1.0
+pkg-resources==0.0.0
+pyasn1==0.4.2
+pyasn1-modules==0.2.1
+pytz==2018.4
+rsa==3.4.2
+six==1.11.0
+uritemplate==3.0.0
+youtube-dl==2018.5.9

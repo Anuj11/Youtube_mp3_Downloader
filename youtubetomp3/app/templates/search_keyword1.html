@@ -1,0 +1,163 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+    padding: 8px;
+    font-size: 20px;
+    text-align: center;
+    background: #00bcd4;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+    float: left;
+    width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+    float: right;
+    width: 25%;
+    padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+    background-color: white;
+    width: 100%;
+    padding: 14px;
+}
+
+.card {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20px;
+}
+/* Add a card effect for articles */
+.card {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20px;
+}
+.success {
+  background-color: #00bcd4;
+  padding: 10px;
+
+  width: 20%;
+  height: 50px;
+  } /* Green */
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+        width: 100%;
+        padding: 0;
+    }
+}
+
+#myProgress {
+  width: "640";
+  background-color: #ddd;
+}
+.success {background-color: #4CAF50;} /* Green */
+
+#myBar {
+  width: 0%;
+  height: 40px;
+  background-color: #2196F3;
+}
+</style>
+</head>
+<body>
+
+
+<script>
+
+function move() {
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 500);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%';
+       document.getElementById("myBar").innerHTML = width * 1  + '%'; 
+    }
+  }
+}
+</script>
+
+
+<div class="header">
+  <h2>Youtube Video's To Mp3</h2>
+</div>
+
+<div class="rightcolumn">
+    <h3>
+    <div id="myBar">
+      </h3>
+    </div>  
+
+<div class="row">
+
+  {% for data in search_data %}
+  <div class="leftcolumn">
+    <div class="card">
+        
+      <h3>
+      <strong>{{data.title}}</strong>
+      </h3>
+      
+      <div class="fakeimg" style="height:450px;">
+      <img  src={{data.images}} width="900" height="420">
+      </div>
+
+    <button type="button" class="btn success" 
+   onclick="window.location.href='/download/?video_id={{data.url }}'; 
+      move();">Download MP3
+  </button>
+    
+  </div>
+  </div>
+
+</div>
+{% endfor %}
+
+
+</body>
+</html>
+    {% endblock %}
